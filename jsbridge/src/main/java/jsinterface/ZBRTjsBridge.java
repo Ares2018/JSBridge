@@ -114,11 +114,11 @@ public class ZBRTjsBridge {
                                     checkResult.put(apiList.get(i), "0");
                                 }
                             } else {
-                                return "0";
+                                return "11001";
                             }
                         }
                     } else {
-                        return "0";
+                        return "11001";
                     }
                 }
                 jsonObj.put("checkResult", checkResult);
@@ -133,10 +133,152 @@ public class ZBRTjsBridge {
                     });
                 }
             } else {
-                return "0";
+                return "11001";
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+
+        return "1";
+    }
+
+    /**
+     * 打开分享
+     */
+    private String openAppShareMenu(String json, String callback) {
+        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+            return "11002";
+        }
+
+        return "1";
+    }
+
+    /**
+     * 更新原生分享内容接口
+     *
+     * @return
+     */
+    private String updateAppShareData(String json, String callback) {
+        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+            return "11002";
+        }
+
+        return "1";
+    }
+
+    /**
+     * 拍照或从手机相册中选择图片
+     *
+     * @return
+     */
+    private String selectImage(String json, String callback) {
+        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+            return "11002";
+        }
+
+        return "1";
+    }
+
+    /**
+     * 录音
+     *
+     * @return
+     */
+    private String startRecord(String json, String callback) {
+        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+            return "11002";
+        }
+
+        return "1";
+    }
+
+    /**
+     * 获取客户端信息接口
+     *
+     * @return
+     */
+    private String getAppInfo(String json, String callback) {
+        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+            return "11002";
+        }
+
+        return "1";
+    }
+
+    /**
+     * 定位
+     *
+     * @return
+     */
+    private String getLocation(String json, String callback) {
+        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+            return "11002";
+        }
+
+        return "1";
+    }
+
+    /**
+     * 关闭页面
+     *
+     * @return
+     */
+    private String closeWindow(String json, String callback) {
+        return "1";
+    }
+
+    /**
+     * 利用客户端进行数据Key-Value取值
+     *
+     * @return
+     */
+    private String saveValueToLocal(String json, String callback) {
+        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+            return "11002";
+        }
+
+        return "1";
+    }
+
+    /**
+     * 登录
+     *
+     * @return
+     */
+    private String login(String json, String callback) {
+        return "1";
+    }
+
+    /**
+     * 获取当前用户信息
+     *
+     * @return
+     */
+    private String getUserInfo(String json, String callback) {
+        return "1";
+    }
+
+    /**
+     * 实名认证功能-绑定手机号（调用判断手机绑定前先判断登录状态）
+     *
+     * @return
+     */
+    private String openAppMobile(String json, String callback) {
+        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+            return "11002";
+        }
+
+        return "1";
+    }
+
+    /**
+     * 修改用户相关信息-[收货名称\收货地址] 调用判断用户收货名称修改前先判断登录状态
+     *
+     * @return
+     */
+    private String modifyUserInfo(String json, String callback) {
+        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+            return "11002";
         }
 
         return "1";
