@@ -81,11 +81,34 @@ public class ZBRTjsBridge {
     }
 
     /**
+     * webview加载js方法
+     *
+     * @param url
+     */
+    private void webviewLoadUrl(String callback, String url) {
+        final String execUrl;
+        if (!TextUtils.isEmpty(callback)) {
+            execUrl = "javascript:" + callback + "(" + url + ")";
+        } else {
+            execUrl = "javascript:" + "console.error" + "(" + url + ")";
+        }
+        if (webview != null) {
+            webview.post(new Runnable() {
+                @Override
+                public void run() {
+                    webview.loadUrl(execUrl);
+                }
+            });
+        }
+
+    }
+
+    /**
      * 判断当前客户端版本是否支持指定JS接口
      */
     private String checkJSApi(String json, String callback) {
         //该方法中json与callback不能为空
-        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+        if (TextUtils.isEmpty(json)) {
             return "11002";
         }
 
@@ -123,15 +146,7 @@ public class ZBRTjsBridge {
                 }
                 jsonObj.put("checkResult", checkResult);
                 //存在回调方法
-                if (!TextUtils.isEmpty(callback)) {
-                    final String execUrl = "javascript:" + callback + "(" + jsonObj.toString() + ")";
-                    webview.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            webview.loadUrl(execUrl);
-                        }
-                    });
-                }
+                webviewLoadUrl(callback, jsonObj.toString());
             } else {
                 return "11001";
             }
@@ -143,10 +158,10 @@ public class ZBRTjsBridge {
     }
 
     /**
-     * 打开分享
+     * 打开分享，分享成功后传入回调
      */
     private String openAppShareMenu(String json, String callback) {
-        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+        if (TextUtils.isEmpty(json)) {
             return "11002";
         }
 
@@ -159,7 +174,7 @@ public class ZBRTjsBridge {
      * @return
      */
     private String updateAppShareData(String json, String callback) {
-        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+        if (TextUtils.isEmpty(json)) {
             return "11002";
         }
 
@@ -167,12 +182,12 @@ public class ZBRTjsBridge {
     }
 
     /**
-     * 拍照或从手机相册中选择图片
+     * 拍照或从手机相册中选择图片，并将结果回传给Js
      *
      * @return
      */
     private String selectImage(String json, String callback) {
-        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+        if (TextUtils.isEmpty(json)) {
             return "11002";
         }
 
@@ -185,7 +200,7 @@ public class ZBRTjsBridge {
      * @return
      */
     private String startRecord(String json, String callback) {
-        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+        if (TextUtils.isEmpty(json)) {
             return "11002";
         }
 
@@ -198,7 +213,7 @@ public class ZBRTjsBridge {
      * @return
      */
     private String getAppInfo(String json, String callback) {
-        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+        if (TextUtils.isEmpty(json)) {
             return "11002";
         }
 
@@ -211,7 +226,7 @@ public class ZBRTjsBridge {
      * @return
      */
     private String getLocation(String json, String callback) {
-        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+        if (TextUtils.isEmpty(json)) {
             return "11002";
         }
 
@@ -264,7 +279,7 @@ public class ZBRTjsBridge {
      * @return
      */
     private String openAppMobile(String json, String callback) {
-        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+        if (TextUtils.isEmpty(json)) {
             return "11002";
         }
 
@@ -277,7 +292,7 @@ public class ZBRTjsBridge {
      * @return
      */
     private String modifyUserInfo(String json, String callback) {
-        if (TextUtils.isEmpty(json) || TextUtils.isEmpty(callback)) {
+        if (TextUtils.isEmpty(json)) {
             return "11002";
         }
 
