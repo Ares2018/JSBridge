@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Created by wanglinjie.
  * create time:2019/2/14  下午4:34
  */
-public class ZBJTAppShareMenuBean implements Serializable {
+public class ZBJTOpenAppShareMenuBean implements Serializable {
 
     private static final long serialVersionUID = 679916787335292724L;
     /**
