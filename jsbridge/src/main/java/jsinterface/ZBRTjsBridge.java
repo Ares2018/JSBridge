@@ -63,12 +63,9 @@ public class ZBRTjsBridge {
      */
     @JavascriptInterface
     public void invoke(String api, String json, String callback) {
-        if (TextUtils.isEmpty(api) || !checkJSApiValid(api)) {
+        //api校验
+        if (TextUtils.isEmpty(api)) {
             webviewLoadUrl(callback, setErrorRspJson("11001"));
-            return;
-        }
-        if (TextUtils.isEmpty(json)) {
-            webviewLoadUrl(callback, setErrorRspJson("11002"));
             return;
         }
 
@@ -77,34 +74,37 @@ public class ZBRTjsBridge {
             Method method = getClass().getDeclaredMethod(api, Class.forName("java.lang.String"), Class.forName("java.lang.String"));
             //调用
             method.invoke(getClass().newInstance(), json, callback);
+        } catch (NoSuchMethodException e) {
+            webviewLoadUrl(callback, setErrorRspJson("11001"));
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    /**
-     * 检测某方法是否存在
-     *
-     * @param api
-     * @return
-     */
-    private boolean checkJSApiValid(String api) {
-        try {
-            Method[] methods = getClass().getMethods();
-            for (Method method : methods) {
-                if (method.getName() != null) {
-                    if (api.equals(method.getName())) {
-                        return true;
-                    }
-                } else {
-                    return false;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+//    /**
+//     * 检测某方法是否存在
+//     *
+//     * @param api
+//     * @return
+//     */
+//    private boolean checkJSApiValid(String api) {
+//        try {
+//            Method[] methods = getClass().getMethods();
+//            for (Method method : methods) {
+//                if (method.getName() != null) {
+//                    if (api.equals(method.getName())) {
+//                        return true;
+//                    }
+//                } else {
+//                    return false;
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
 
     /**
      * webview加载js方法
@@ -205,6 +205,11 @@ public class ZBRTjsBridge {
      * 打开分享，分享成功后传入回调
      */
     private void openAppShareMenu(String json, String callback) {
+        //参数不合法
+        if (TextUtils.isEmpty(json)) {
+            webviewLoadUrl(callback, setErrorRspJson("11002"));
+            return;
+        }
         ZBJTOpenAppShareMenuBean bean;
         try {
             bean = JsonUtils.parseObject(json, ZBJTOpenAppShareMenuBean.class);
@@ -221,6 +226,10 @@ public class ZBRTjsBridge {
      * @return
      */
     private void updateAppShareData(String json, String callback) {
+        if (TextUtils.isEmpty(json)) {
+            webviewLoadUrl(callback, setErrorRspJson("11002"));
+            return;
+        }
         ZBJTOpenAppShareMenuBean bean;
         try {
             bean = JsonUtils.parseObject(json, ZBJTOpenAppShareMenuBean.class);
@@ -237,6 +246,10 @@ public class ZBRTjsBridge {
      * @return
      */
     private void selectImage(String json, String callback) {
+        if (TextUtils.isEmpty(json)) {
+            webviewLoadUrl(callback, setErrorRspJson("11002"));
+            return;
+        }
         ZBJTSelectImageBean bean;
         try {
             bean = JsonUtils.parseObject(json, ZBJTSelectImageBean.class);
@@ -253,6 +266,10 @@ public class ZBRTjsBridge {
      * @return
      */
     private void startRecord(String json, String callback) {
+        if (TextUtils.isEmpty(json)) {
+            webviewLoadUrl(callback, setErrorRspJson("11002"));
+            return;
+        }
         ZBJTStartRecordBean bean;
         try {
             bean = JsonUtils.parseObject(json, ZBJTStartRecordBean.class);
@@ -269,6 +286,10 @@ public class ZBRTjsBridge {
      * @return
      */
     private void getAppInfo(String json, String callback) {
+        if (TextUtils.isEmpty(json)) {
+            webviewLoadUrl(callback, setErrorRspJson("11002"));
+            return;
+        }
         ZBJTGetAppInfoBean bean;
         try {
             bean = JsonUtils.parseObject(json, ZBJTGetAppInfoBean.class);
@@ -292,6 +313,10 @@ public class ZBRTjsBridge {
      * 文件上传
      */
     private void uploadFile(String json, String callback) {
+        if (TextUtils.isEmpty(json)) {
+            webviewLoadUrl(callback, setErrorRspJson("11002"));
+            return;
+        }
         ZBJTUploadFileBean bean;
         try {
             bean = JsonUtils.parseObject(json, ZBJTUploadFileBean.class);
@@ -317,6 +342,10 @@ public class ZBRTjsBridge {
      * @return
      */
     private void saveValueToLocal(String json, String callback) {
+        if (TextUtils.isEmpty(json)) {
+            webviewLoadUrl(callback, setErrorRspJson("11002"));
+            return;
+        }
         ZBJTGetValueFromLocalBean bean;
         try {
             bean = JsonUtils.parseObject(json, ZBJTGetValueFromLocalBean.class);
@@ -331,6 +360,10 @@ public class ZBRTjsBridge {
      * 利用客户端进行数据Key-Value取值
      */
     private void getValueFromLocal(String json, String callback) {
+        if (TextUtils.isEmpty(json)) {
+            webviewLoadUrl(callback, setErrorRspJson("11002"));
+            return;
+        }
         ZBJTGetValueFromLocalBean bean;
         try {
             bean = JsonUtils.parseObject(json, ZBJTGetValueFromLocalBean.class);
@@ -356,6 +389,10 @@ public class ZBRTjsBridge {
      * @return
      */
     private void getUserInfo(String json, String callback) {
+        if (TextUtils.isEmpty(json)) {
+            webviewLoadUrl(callback, setErrorRspJson("11002"));
+            return;
+        }
         interFace.getUserInfo(webview, json, callback);
     }
 
@@ -365,6 +402,10 @@ public class ZBRTjsBridge {
      * @return
      */
     private void openAppMobile(String json, String callback) {
+        if (TextUtils.isEmpty(json)) {
+            webviewLoadUrl(callback, setErrorRspJson("11002"));
+            return;
+        }
         ZBJTOpenAppMobileBean bean;
         try {
             bean = JsonUtils.parseObject(json, ZBJTOpenAppMobileBean.class);
@@ -381,6 +422,10 @@ public class ZBRTjsBridge {
      * @return
      */
     private void modifyUserInfo(String json, String callback) {
+        if (TextUtils.isEmpty(json)) {
+            webviewLoadUrl(callback, setErrorRspJson("11002"));
+            return;
+        }
         ZBJTModifyUserInfoBean bean;
         try {
             bean = JsonUtils.parseObject(json, ZBJTModifyUserInfoBean.class);

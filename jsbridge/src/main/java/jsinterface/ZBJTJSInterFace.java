@@ -22,7 +22,7 @@ import bean.ZBJTUploadFileBean;
 import bean.ZBJTUploadFileRspBean;
 
 /**
- * JSSDK具体业务逻辑接口
+ * JSSDK具体业务逻辑接口,可在各个项目中通用
  * Created by wanglinjie.
  * create time:2019/2/15  下午3:43
  */
