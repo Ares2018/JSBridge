@@ -1,6 +1,6 @@
 package jsinterface;
 
-import com.commonwebview.webview.CommonWebView;
+import android.webkit.WebView;
 
 import bean.ZBJTGetAppInfoBean;
 import bean.ZBJTGetAppInfoRspBean;
@@ -30,73 +30,73 @@ public interface ZBJTJSInterFace {
     /**
      * 打开分享，分享成功后传入回调
      */
-    void openAppShareMenu(CommonWebView webview, ZBJTOpenAppShareMenuBean bean, ZBJTOpenAppShareMenuRspBean beanRsp, String callback);
+    void openAppShareMenu(WebView webview, ZBJTOpenAppShareMenuBean bean, ZBJTOpenAppShareMenuRspBean beanRsp, String callback);
 
     /**
      * 更新原生分享内容接口
      *
      * @return
      */
-    void updateAppShareData(CommonWebView webview, ZBJTOpenAppShareMenuBean bean, ZBJTReturnBean beanRsp, String callback);
+    void updateAppShareData(WebView webview, ZBJTOpenAppShareMenuBean bean, ZBJTReturnBean beanRsp, String callback);
 
     /**
      * 拍照或从手机相册中选择图片，并将结果回传给Js
      *
      * @return
      */
-    void selectImage(CommonWebView webview, ZBJTSelectImageBean bean, ZBJTSelectImageRspBean beanRsp, String callback);
+    void selectImage(WebView webview, ZBJTSelectImageBean bean, ZBJTSelectImageRspBean beanRsp, String callback);
 
     /**
      * 录音
      *
      * @return
      */
-    void startRecord(CommonWebView webview, ZBJTStartRecordBean bean, ZBJTStartRecordRspBean beanRsp, String callback);
+    void startRecord(WebView webview, ZBJTStartRecordBean bean, ZBJTStartRecordRspBean beanRsp, String callback);
 
     /**
      * 获取客户端信息接口
      *
      * @return
      */
-    void getAppInfo(CommonWebView webview, ZBJTGetAppInfoBean bean, ZBJTGetAppInfoRspBean BeanRsp, String callback);
+    void getAppInfo(WebView webview, ZBJTGetAppInfoBean bean, ZBJTGetAppInfoRspBean BeanRsp, String callback);
 
     /**
      * 定位
      *
      * @return
      */
-    void getLocation(CommonWebView webview, ZBJTGetLocalRspBean BeanRsp, String callback);
+    void getLocation(WebView webview, ZBJTGetLocalRspBean BeanRsp, String callback);
 
     /**
      * 文件上传
      */
-    void uploadFile(CommonWebView webview, ZBJTUploadFileBean bean, ZBJTUploadFileRspBean beanRsp, String callback);
+    void uploadFile(WebView webview, ZBJTUploadFileBean bean, ZBJTUploadFileRspBean beanRsp, String callback);
 
     /**
      * 关闭页面
      *
      * @return
      */
-    void closeWindow(CommonWebView webview, ZBJTReturnBean beanRsp, String callback);
+    void closeWindow(WebView webview, ZBJTReturnBean beanRsp, String callback);
 
     /**
      * 利用客户端进行数据Key-Value存值
      *
      * @return
      */
-    void saveValueToLocal(CommonWebView webview, ZBJTGetValueFromLocalBean bean, ZBJTReturnBean beanRsp, String callback);
+    void saveValueToLocal(WebView webview, ZBJTGetValueFromLocalBean bean, ZBJTReturnBean beanRsp, String callback);
 
     /**
      * 利用客户端进行数据Key-Value取值
      */
-    void getValueFromLocal(CommonWebView webview, ZBJTGetValueFromLocalBean bean, ZBJTGetValueFromLocalRspBean beanRsp, String callback);
+    void getValueFromLocal(WebView webview, ZBJTGetValueFromLocalBean bean, ZBJTGetValueFromLocalRspBean beanRsp, String callback);
 
     /**
      * 登录
      *
      * @return
      */
-    void login(CommonWebView webview, ZBJTReturnBean beanRsp, String callback);
+    void login(WebView webview, ZBJTReturnBean beanRsp, String callback);
 
     //TODO 这里用户信息的bean到具体的业务逻辑中去实现
 
@@ -105,19 +105,19 @@ public interface ZBJTJSInterFace {
      *
      * @return
      */
-    void getUserInfo(CommonWebView webview, String json, String callback);
+    void getUserInfo(WebView webview, String json, String callback);
 
     /**
      * 实名认证功能-绑定手机号（调用判断手机绑定前先判断登录状态）
      *
      * @return
      */
-    void openAppMobile(CommonWebView webVebview, ZBJTOpenAppMobileBean bean, ZBJTOpenAppMobileRspBean beanRsp, String callback);
+    void openAppMobile(WebView webVebview, ZBJTOpenAppMobileBean bean, ZBJTOpenAppMobileRspBean beanRsp, String callback);
 
     /**
      * 修改用户相关信息-[收货名称\收货地址] 调用判断用户收货名称修改前先判断登录状态
      *
      * @return
      */
-    void modifyUserInfo(CommonWebView webview, ZBJTModifyUserInfoBean bean, ZBJTModifyUserInfoRspBean beanRsp, String callback);
+    void modifyUserInfo(WebView webview, ZBJTModifyUserInfoBean bean, ZBJTModifyUserInfoRspBean beanRsp, String callback);
 }

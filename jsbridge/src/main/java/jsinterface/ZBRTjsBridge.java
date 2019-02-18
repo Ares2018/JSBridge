@@ -2,8 +2,8 @@ package jsinterface;
 
 import android.text.TextUtils;
 import android.webkit.JavascriptInterface;
+import android.webkit.WebView;
 
-import com.commonwebview.webview.CommonWebView;
 import com.google.gson.JsonParseException;
 
 import org.json.JSONException;
@@ -43,9 +43,9 @@ public class ZBRTjsBridge {
     public static final String PREFIX_JS_METHOD_NAME = "ZBJTJSBridge";
 
     private ZBJTJSInterFace interFace;
-    private CommonWebView webview;
+    private WebView webview;
 
-    public ZBRTjsBridge(CommonWebView webview) {
+    public ZBRTjsBridge(WebView webview) {
         this.webview = webview;
     }
 
