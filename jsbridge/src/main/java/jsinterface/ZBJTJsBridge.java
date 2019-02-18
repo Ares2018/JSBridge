@@ -39,13 +39,13 @@ import jsonutils.JsonUtils;
  * Created by wanglinjie.
  * create time:2019/2/14  上午10:32
  */
-public class ZBRTjsBridge {
+public class ZBJTJsBridge {
     public static final String PREFIX_JS_METHOD_NAME = "ZBJTJSBridge";
 
     private ZBJTJSInterFace interFace;
     private WebView webview;
 
-    public ZBRTjsBridge(WebView webview) {
+    public ZBJTJsBridge(WebView webview) {
         this.webview = webview;
     }
 
